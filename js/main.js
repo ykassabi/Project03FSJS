@@ -107,7 +107,6 @@ const input = document.createElement("input"); //creating a input field for opti
 input.setAttribute("type","text");
 
 jobRole.addEventListener("change", () => {//>>>>>>>>>>>>>> An Event
-  // let lastElement = jobRole.lastElementChild;
   if(jobRole.parentNode.childElementCount > 7){ // 7 for the number child
     jobRole.parentNode.removeChild(input);
   }
@@ -132,7 +131,6 @@ fieldSets[1].addEventListener("change", (e) => {
         colorsDesign[i].style.display = (i < 3) ? "inline" : "none"; //only colorsDesign[0], colorsDesign[1], colorsDesign[2] are show & only colorsDesign[3], colorsDesign[4], colorsDesign[5] are hidden
       }
     }//end of the tShirtDesign for js puns
-
     else if ( tShirtDesign.value === "heart js") {
       tShirtColor.style.display = "inline";
       paragraph.innerHTML = "";
@@ -141,7 +139,6 @@ fieldSets[1].addEventListener("change", (e) => {
         colorsDesign[i].style.display = (i > 2) ? "inline" : "none";//only colorsDesign[3], colorsDesign[4], colorsDesign[5] are showen & only colorsDesign[0], colorsDesign[1], colorsDesign[3] are hidden by display none.
       }
     }//end of the tShirtDesign for heart js
-
     else{
       tShirtColor.style.display = "none";
       paragraph.innerHTML = "Please select a T-shirt theme";
@@ -223,22 +220,22 @@ CreditCardPayment.addEventListener("input", (e) => {
     let correctFormat = /^(?:4[0-9]{12}(?:[0-9]{3})?|[25][1-7][0-9]{14}|6(?:011|5[0-9][0-9])[0-9]{12}|3[47][0-9]{13}|3(?:0[0-5]|[68][0-9])[0-9]{11}|(?:2131|1800|35\d{3})\d{11})$/;
     //targeting all creditCards starting with 2,3,4, 5 or 6 Visa /Master/ AmericanX ...
     let result = regXTest(correctFormat,(e.target.value));//pass a boolean to result
-      nBlankCreditCard = result ? true : false;//evaluate result and pass the result to nBlankCreditCard, that will be used on the submit section.
-      result ? borderDesengage(e.target,"cc-num" ,"Card Number") : borderEngage(e.target,"cc-num","Card Number");// remouve the border : add the border , //credit card Selector to be targeted
+    nBlankCreditCard = result ? true : false;//evaluate result and pass the result to nBlankCreditCard, that will be used on the submit section.
+    result ? borderDesengage(e.target,"cc-num" ,"Card Number") : borderEngage(e.target,"cc-num","Card Number");// remouve the border : add the border , //credit card Selector to be targeted
   }
   /////////////////////////////ZIP////////////////////////////////
   else if (e.target.id == "zip") {
     let correctFormat = /^[0-9]{5}$/; //just 5 digits
     let result = regXTest(correctFormat,(e.target.value));
-      nBlankZip = result ? true : false;
-      result ? borderDesengage(e.target,"zip","Zip") : borderEngage(e.target,"zip","Zip"); // zip selector
+    nBlankZip = result ? true : false;
+    result ? borderDesengage(e.target,"zip","Zip") : borderEngage(e.target,"zip","Zip"); // zip selector
   }
   ////////////////////////////////CVV///////////////////////////
   else if (e.target.id == "cvv") {
     let correctFormat = /^[0-9]{3}$/; //just 3 digits
     let result = regXTest(correctFormat,(e.target.value));
-      nBlankCVV = result ? true : false;//p
-      result ? borderDesengage(e.target,"cvv","CVV") : borderEngage(e.target,"cvv","CVV");
+    nBlankCVV = result ? true : false;//p
+    result ? borderDesengage(e.target,"cvv","CVV") : borderEngage(e.target,"cvv","CVV");
   }
   //////////////////////Year verification///////////////////////
   else if (e.target.id == "exp-year"){
