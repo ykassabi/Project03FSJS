@@ -193,6 +193,7 @@ allPaymentMethod.addEventListener("change", (e) => {// An Event all payment meth
   if(e.target.value == "paypal" || e.target.value == "bitcoin" || e.target.value == "credit card" ){
     let position = e.target.selectedIndex + 2;
     for(let i = 3 ; i < 6; i++){//
+      console.dir(fieldSets[3].children[i]);
       if(i != position){
         fieldSets[3].children[i].hidden = true;
       }
@@ -255,12 +256,27 @@ CreditCardPayment.addEventListener("input", (e) => {
 // /// //// ///// ////// /////// //////// ///////// ////////// ////////////// Submition //
 
 form.addEventListener("submit", (e) => {//>>>>>>>>>>>>>> An Event when it submitting the form
-    e.preventDefault();
+  if(nBlankName && nBlankEmail && nBlankActivity && nBlankPayement){
+    if( (allPaymentMethod.value == "credit card") && nBlankCreditCard && nBlankZip && nBlankCVV){
+      console.log("✨✨✨✨✨")
+    }
+    else{
+      nBlankCreditCard ? console.log("there is A cc") : borderEngage(cc,"cc-num","Card Number");
+      nBlankZip ? console.log("there is A zip") : borderEngage(zip,"zip","Zip");
+      nBlankCVV ? console.log("there is A cvv") : borderEngage(cvv,"cvv","CVV");
+      e.preventDefault();
+    }
+  }
+  else{
     nBlankName ? console.log("there is A Name") : borderEngage(name, "name", "Name");
     nBlankEmail ? console.log("there is A Email") : borderEngage(email,"mail","Email");
     nBlankActivity ? console.log("there is An activities") : borderSectionOn(fieldSets[2]);
     nBlankPayement ? console.log("there is A allPaymentMethod") : borderSectionOn(fieldSets[3]);
-    nBlankCreditCard ? console.log("there is A cc") : borderEngage(cc,"cc-num","Card Number");
-    nBlankZip ? console.log("there is A zip") : borderEngage(zip,"zip","Zip");
-    nBlankCVV ? console.log("there is A cvv") : borderEngage(cvv,"cvv","CVV");
+    if(allPaymentMethod.value == "credit card" ){
+      nBlankCreditCard ? console.log("there is A cc") : borderEngage(cc,"cc-num","Card Number");
+      nBlankZip ? console.log("there is A zip") : borderEngage(zip,"zip","Zip");
+      nBlankCVV ? console.log("there is A cvv") : borderEngage(cvv,"cvv","CVV");
+    }
+    e.preventDefault();
+  }
 },false);
