@@ -244,11 +244,11 @@ CreditCardPayment.addEventListener("input", (e) => {
     let d = new Date().getFullYear();
 
     if(currentValue >= d){
-      borderDesengage(e.target,"exp-year", "Expiration Year;");
+      borderDesengage(e.target,"exp-year", "Expiration Year");
       // future add an if statement to check for the month when the currentValue == d
     }
     else{
-      borderEngage(e.target,"exp-year", "Expiration Year:&#10071;");
+      borderEngage(e.target,"exp-year", "Expiration Year &#10071");
     }
   }
 }, false );
